@@ -1,235 +1,144 @@
-# Esra Akilli - AI & ML Engineer CV Website
+# Esra Akıllı - Professional Portfolio Website
 
-A modern, professional CV website built with React (TypeScript) frontend and Python (FastAPI) backend. Features beautiful animations, responsive design, and a contact form.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features a clean design, multilingual support (English/Turkish), and showcases professional experience in AI/ML engineering.
 
-![CV Website Preview](https://img.shields.io/badge/Status-Ready%20to%20Deploy-brightgreen)
+![Portfolio Website Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![Domain](https://img.shields.io/badge/Domain-esraakilli.com-blue)
 
-## 🚀 Features
+## Features
 
-- **Modern Design**: Glass morphism effects, gradient backgrounds, and smooth animations
-- **Responsive**: Works perfectly on desktop, tablet, and mobile devices
-- **Interactive**: Smooth scrolling navigation, hover effects, and form interactions
-- **Professional**: Clean layout showcasing experience, education, skills, and portfolio
-- **Contact Form**: Functional contact form with backend integration
+- **Modern Design**: Clean, professional layout with smooth animations
+- **Responsive**: Optimized for desktop, tablet, and mobile devices
+- **Multilingual**: English and Turkish language support
+- **Interactive**: Smooth scrolling navigation and hover effects
+- **Professional**: Comprehensive showcase of experience, education, skills, and projects
 - **Fast**: Built with Vite for lightning-fast development and builds
+- **TypeScript**: Full type safety and better development experience
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 18** with TypeScript
-- **Vite** for build tooling
+- **Vite** for build tooling and development
 - **TailwindCSS** for styling
 - **Framer Motion** for animations
 - **React Icons** for beautiful icons
-- **Axios** for API calls
+- **React Router DOM** for navigation
+- **React Intersection Observer** for scroll animations
 
-### Backend
-- **FastAPI** (Python)
-- **Pydantic** for data validation
-- **CORS** middleware for frontend integration
-- **Uvicorn** ASGI server
+### Development Tools
+- **TypeScript** for type safety
+- **ESLint** for code quality
+- **PostCSS** for CSS processing
+- **Autoprefixer** for browser compatibility
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-cv-website/
-├── backend/
-│   ├── main.py              # FastAPI application
-│   └── requirements.txt     # Python dependencies
+portfolio/
 ├── frontend/
 │   ├── src/
-│   │   ├── components/      # React components
-│   │   │   ├── Header.tsx
-│   │   │   ├── Hero.tsx
-│   │   │   ├── About.tsx
-│   │   │   ├── Experience.tsx
-│   │   │   ├── Education.tsx
-│   │   │   ├── Skills.tsx
-│   │   │   ├── Volunteering.tsx
-│   │   │   ├── Contact.tsx
-│   │   │   ├── Footer.tsx
-│   │   │   └── LoadingSpinner.tsx
-│   │   ├── App.tsx         # Main App component
-│   │   ├── main.tsx        # Entry point
-│   │   └── index.css       # Global styles
-│   ├── package.json        # Frontend dependencies
-│   ├── tailwind.config.js  # TailwindCSS config
-│   ├── vite.config.ts      # Vite configuration
-│   └── index.html          # HTML template
-└── README.md
+│   │   ├── components/           # React components
+│   │   │   ├── Header.tsx       # Navigation header
+│   │   │   ├── Hero.tsx         # Main hero section
+│   │   │   ├── Footer.tsx       # Footer component
+│   │   │   ├── Loader.tsx       # Loading spinner
+│   │   │   ├── ErrorState.tsx   # Error handling
+│   │   │   ├── ProjectCard.tsx  # Project showcase cards
+│   │   │   ├── PortfolioSlider.tsx # Portfolio carousel
+│   │   │   └── sections/        # Page sections
+│   │   │       ├── CareerSection.tsx      # Professional experience
+│   │   │       ├── EducationSection.tsx   # Educational background
+│   │   │       ├── ProjectsSection.tsx   # Project portfolio
+│   │   │       ├── SkillsSection.tsx     # Technical skills
+│   │   │       ├── ActivitiesSection.tsx # Extracurricular activities
+│   │   │       └── CreativitySection.tsx  # Interests and creativity
+│   │   ├── data/                # Static data
+│   │   │   ├── cvData.ts        # CV information
+│   │   │   └── projects.ts      # Project data
+│   │   ├── hooks/               # Custom React hooks
+│   │   │   ├── useCVData.ts     # CV data management
+│   │   │   ├── useScrollSpy.ts  # Scroll spy functionality
+│   │   │   └── useTranslation.ts # Translation system
+│   │   ├── locales/             # Translation files
+│   │   │   ├── en/              # English translations
+│   │   │   └── tr/              # Turkish translations
+│   │   ├── styles/              # Styling
+│   │   │   └── theme.ts         # Theme configuration
+│   │   ├── types/               # TypeScript type definitions
+│   │   │   └── index.ts         # Type definitions
+│   │   ├── App.tsx              # Main App component
+│   │   ├── main.tsx             # Entry point
+│   │   └── index.css            # Global styles
+│   ├── public/                  # Static assets
+│   │   ├── projects/            # Project images
+│   │   ├── CV-Güncel.pdf        # CV download
+│   │   └── foto.jpeg            # Profile photo
+│   ├── package.json             # Dependencies and scripts
+│   ├── tailwind.config.js       # TailwindCSS configuration
+│   ├── vite.config.ts           # Vite configuration
+│   ├── tsconfig.json            # TypeScript configuration
+│   └── index.html               # HTML template
+├── CV-Güncel.pdf               # Latest CV
+└── README.md                   # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 Make sure you have the following installed:
-- **Python 3.8+**
 - **Node.js 16+**
 - **npm** or **yarn**
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd cv-website
+git clone https://github.com/EsraAkilli/portfolio.git
+cd portfolio
 ```
 
-### 2. Backend Setup
+### 2. Install Dependencies
 
 ```bash
-# Navigate to backend directory
-cd backend
-
-# Create virtual environment (recommended)
-python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the backend server
-python main.py
-```
-
-The backend will be available at `http://localhost:8000`
-
-### 3. Frontend Setup
-
-Open a new terminal window:
-
-```bash
-# Navigate to frontend directory
 cd frontend
-
-# Install dependencies
 npm install
+```
 
-# Start development server
+### 3. Start Development Server
+
+```bash
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:3000`
+The website will be available at `http://localhost:3000`
 
-## 🔧 Development
-
-### Backend Development
-
-The FastAPI backend provides the following endpoints:
-
-- `GET /` - API health check
-- `GET /api/cv` - Get complete CV data
-- `GET /api/contact` - Get contact information
-- `GET /api/experience` - Get experience data
-- `GET /api/education` - Get education data
-- `GET /api/skills` - Get skills data
-- `POST /api/contact-form` - Submit contact form
-
-### Frontend Development
-
-The React frontend is organized into reusable components:
-
-- **Header**: Navigation with smooth scrolling
-- **Hero**: Main introduction section with profile
-- **About**: Career objective and stats
-- **Experience**: Work experience timeline
-- **Education**: Educational background
-- **Skills**: Technical skills categorized
-- **Volunteering**: Community involvement and personal info
-- **Contact**: Contact form and information
-- **Footer**: Social links and copyright
-
-### Customization
-
-To customize the CV data, edit the `cv_data` object in `backend/main.py`:
-
-```python
-cv_data = {
-    "personal_info": {
-        "name": "Your Name",
-        "title": "Your Title",
-        "career_objective": "Your career objective..."
-    },
-    # ... rest of the data
-}
-```
-
-### Styling
-
-The project uses TailwindCSS with custom configuration in `frontend/tailwind.config.js`. Custom styles are defined in `frontend/src/index.css`.
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-
-- **Desktop**: Full-width layout with animations
-- **Tablet**: Adjusted grid layouts and spacing
-- **Mobile**: Single-column layout with touch-friendly interactions
-
-## 🎨 Design Features
-
-- **Glass Morphism**: Semi-transparent elements with backdrop blur
-- **Gradient Backgrounds**: Beautiful color transitions
-- **Smooth Animations**: Framer Motion powered interactions
-- **Hover Effects**: Interactive elements with visual feedback
-- **Loading States**: Elegant loading spinners and transitions
-
-## 🚀 Deployment
-
-### Backend Deployment
-
-The FastAPI backend can be deployed to platforms like:
-
-- **Heroku**
-- **Railway**
-- **DigitalOcean**
-- **AWS/GCP/Azure**
-
-### Frontend Deployment
-
-The React frontend can be deployed to:
-
-- **Vercel** (recommended)
-- **Netlify**
-- **GitHub Pages**
-- **AWS S3**
-
-### Build for Production
+### 4. Build for Production
 
 ```bash
-# Build frontend
-cd frontend
 npm run build
-
-# The build files will be in the `dist` directory
 ```
 
-## 🤝 Contributing
+The build files will be in the `dist` directory.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Live Website
 
-## 📄 License
+Visit the live website at: **[esraakilli.com](https://esraakilli.com)**
+
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Contact
+##  Contact
 
 **Esra Akilli**
-- Email: akilliesa.01@gmail.com
-- LinkedIn: [esra-akilli](https://linkedin.com/in/esra-akilli)
-- GitHub: [EsraAkilli](https://github.com/EsraAkilli)
+- **Email**: akilliesra.01@gmail.com
+- **LinkedIn**: [esra-akıllı](https://linkedin.com/in/esra-akıllı)
+- **GitHub**: [EsraAkilli](https://github.com/EsraAkilli)
+- **Website**: [esraakilli.com](https://esraakilli.com)
 
 ---
 
 ⭐ If you found this helpful, please give it a star!
 
-Built with ❤️ using React and Python 
+Built with ❤️ using React, TypeScript, and Tailwind CSS
