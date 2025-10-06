@@ -129,7 +129,7 @@ export const commonStyles = {
   },
   section: {
     minHeight: '100vh',
-    padding: `${theme.spacing.xxxxxl} ${theme.spacing.xl} ${theme.spacing.xxxxl}`,
+    padding: `${theme.spacing.xl} ${theme.spacing.xl} ${theme.spacing.xl}`,
     maxWidth: '1200px',
     margin: '0 auto'
   },
