@@ -21,6 +21,26 @@ export const common = {
   downloadCV: "Download CV",
   builtWith: "Built with passion using React & TypeScript",
   
+  // Personal Information
+  personalInfo: {
+    name: "ESRA AKILLI",
+    title: "ML & Generative AI | Building Intelligent Systems",
+    bio: "Passionate engineer with a strong dual background in Mathematics and Industrial Engineering, specializing in machine learning and generative AI. Experienced in building intelligent systems that solve real-world problems using cutting-edge technologies like LLMs and NLP. Also a hobbyist artist, mobile game enthusiast, and traveler with a keen interest in creative problem-solving and staying updated with the latest tech innovations."
+  },
+  
+  // Contact Information
+  contact: {
+    email: "akilliesra.01@gmail.com",
+    linkedin: "esra-akıllı",
+    github: "https://github.com/EsraAkilli"
+  },
+  
+  // Languages
+  languages: [
+    {"language": "Turkish", "level": "Native"},
+    {"language": "English", "level": "Professional Working"}
+  ],
+  
   // Hero Section
   hero: {
     title: "ML & Generative AI | Building Intelligent Systems",

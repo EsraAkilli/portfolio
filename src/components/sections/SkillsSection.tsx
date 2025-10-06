@@ -1,19 +1,17 @@
 import React from 'react';
-import { SkillCategory, LanguageSkill } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface SkillsSectionProps {
-  skills: SkillCategory[];
-  languages: LanguageSkill[];
   lang: 'en' | 'tr';
 }
 
-const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, languages, lang }) => {
+const SkillsSection: React.FC<SkillsSectionProps> = ({ lang }) => {
   const { t } = useTranslation(lang);
 
-  const technicalSkills = skills?.filter(s => s.category !== 'Design & Content Creation');
-  const designSkills = skills?.find(s => s.category === 'Design & Content Creation');
+  const skillKeys = ['programmingLanguages', 'aiDataTechnologies', 'softwareInfrastructure', 'optimizationProductivityTools', 'designContentCreation'];
+  const technicalSkills = skillKeys.slice(0, 4).map(key => t(`skills.${key}`));
+  const designSkills = t('skills.designContentCreation');
 
   return (
     <section style={commonStyles.section} id="skills">
@@ -31,10 +29,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, languages, lang }
               paddingBottom: theme.spacing.sm,
               fontWeight: theme.typography.weights.semibold
             }}>
-              {lang === 'tr' ? t(`skills.${skillCategory.category === 'Programming Languages' ? 'programmingLanguages' : 
-                skillCategory.category === 'AI & Data Technologies' ? 'aiDataTechnologies' : 
-                skillCategory.category === 'Software & Infrastructure' ? 'softwareInfrastructure' : 
-                skillCategory.category === 'Optimization & Productivity Tools' ? 'optimizationProductivityTools' : 'designContentCreation'}.category`) : skillCategory.category}
+              {skillCategory.category}
             </h3>
             <div style={{
               display: 'flex',
@@ -61,7 +56,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, languages, lang }
               paddingBottom: theme.spacing.sm,
               fontWeight: theme.typography.weights.semibold
             }}>
-              {lang === 'tr' ? t('skills.designContentCreation.category') : 'Design & Content Creation'}
+              {designSkills.category}
             </h3>
             <div style={{
               display: 'flex',
@@ -88,27 +83,27 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, languages, lang }
             paddingBottom: theme.spacing.sm
           }}>{lang === 'tr' ? 'Diller' : 'Languages'}</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.md }}>
-            {languages?.map((lang, index) => (
+            {t('common.languages')?.map((langItem: any, index: number) => (
               <div key={index} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: `${theme.spacing.md} 0`,
-                borderBottom: index < (languages?.length || 0) - 1 ? `1px solid ${theme.colors.border}` : 'none'
+                borderBottom: index < (t('common.languages')?.length || 0) - 1 ? `1px solid ${theme.colors.border}` : 'none'
               }}>
                 <span style={{ 
                   fontWeight: theme.typography.weights.semibold, 
                   color: theme.colors.text.primary, 
                   fontSize: theme.typography.sizes.lg 
                 }}>
-                  {lang.language}
+                  {langItem.language}
                 </span>
                 <span style={{ 
                   color: theme.colors.text.muted, 
                   fontSize: theme.typography.sizes.sm, 
                   fontWeight: theme.typography.weights.medium 
                 }}>
-                  {lang.level}
+                  {langItem.level}
                 </span>
               </div>
             ))}

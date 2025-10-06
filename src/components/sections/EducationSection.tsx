@@ -1,20 +1,22 @@
 import React from 'react';
-import { Education } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface EducationSectionProps {
-  education: Education[];
   lang: 'en' | 'tr';
 }
 
-const EducationSection: React.FC<EducationSectionProps> = ({ education, lang }) => {
+const EducationSection: React.FC<EducationSectionProps> = ({ lang }) => {
   const { t } = useTranslation(lang);
+
+  const educationKeys = ['industrialEngineering', 'mathematicsEngineering', 'highSchool'];
 
   return (
     <section style={commonStyles.section} id="education">
       <h1 style={commonStyles.sectionTitle}>{t('common.education')}</h1>
-      {education?.map((edu, index) => (
+      {educationKeys.map((eduKey, index) => {
+        const edu = t(`education.${eduKey}`);
+        return (
         <div key={index} style={commonStyles.card}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: theme.spacing.xxxl }}>
             <div style={{ flex: 1 }}>
@@ -79,11 +81,11 @@ const EducationSection: React.FC<EducationSectionProps> = ({ education, lang }) 
               </div>
               
               <p style={{ color: theme.colors.text.muted, lineHeight: '1.6', marginBottom: theme.spacing.md }}>
-                <strong>{lang === 'tr' ? 'Dersler:' : 'Courses:'}</strong> {lang === 'tr' ? t(`education.${index === 0 ? 'industrialEngineering' : index === 1 ? 'mathematicsEngineering' : 'highSchool'}.focus`) : edu.focus}
+                <strong>{lang === 'tr' ? 'Dersler:' : 'Courses:'}</strong> {edu.focus}
               </p>
               {edu.project && (
                 <p style={{ color: theme.colors.text.muted, lineHeight: '1.6', marginBottom: theme.spacing.lg }}>
-                  <strong>{lang === 'tr' ? 'Mezuniyet Projesi:' : 'Graduation Project:'}</strong> {lang === 'tr' ? t(`education.${index === 0 ? 'industrialEngineering' : index === 1 ? 'mathematicsEngineering' : 'highSchool'}.project`) : edu.project}
+                  <strong>{lang === 'tr' ? 'Mezuniyet Projesi:' : 'Graduation Project:'}</strong> {edu.project}
                 </p>
               )}
             </div>
@@ -91,7 +93,8 @@ const EducationSection: React.FC<EducationSectionProps> = ({ education, lang }) 
 
           </div>
         </div>
-      ))}
+        );
+      })}
     </section>
   );
 };

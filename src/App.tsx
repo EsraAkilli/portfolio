@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { commonStyles } from './styles/theme';
-import { useCVData } from './hooks/useCVData';
 import { useScrollSpy } from './hooks/useScrollSpy';
-import { projects as projectsData } from './data/projects';
+import { useTranslation } from './hooks/useTranslation';
 
 // Components
 import Header from './components/Header';
@@ -14,11 +13,10 @@ import SkillsSection from './components/sections/SkillsSection';
 import ActivitiesSection from './components/sections/ActivitiesSection';
 import CreativitySection from './components/sections/CreativitySection';
 import Footer from './components/Footer';
-import Loader from './components/Loader';
-import ErrorState from './components/ErrorState';
 
 function App() {
   const [lang, setLang] = React.useState<'en' | 'tr'>('en');
+  const { t } = useTranslation(lang);
   
   // Refs for each section
   const homeRef = useRef<HTMLDivElement>(null);
@@ -39,19 +37,17 @@ function App() {
     creativity: creativityRef
   };
 
-  // Custom hooks
-  const { cvData, loading, error } = useCVData();
   const activeSection = useScrollSpy(sectionRefs);
 
   // Navigation data
   const navigation = [
-    { id: 'home', label: lang === 'tr' ? 'Ana Sayfa' : 'Home' },
-    { id: 'career', label: lang === 'tr' ? 'Kariyer' : 'Career' },
-    { id: 'education', label: lang === 'tr' ? 'Eğitim' : 'Education' },
-    { id: 'projects', label: lang === 'tr' ? 'Projeler' : 'Projects' },
-    { id: 'skills', label: lang === 'tr' ? 'Yetenekler' : 'Skills' },
-    { id: 'activities', label: lang === 'tr' ? 'Aktiviteler' : 'Activities' },
-    { id: 'creativity', label: lang === 'tr' ? 'Yaratıcılık' : 'Creativity' }
+    { id: 'home', label: t('common.home') },
+    { id: 'career', label: t('common.career') },
+    { id: 'education', label: t('common.education') },
+    { id: 'projects', label: t('common.projects') },
+    { id: 'skills', label: t('common.skills') },
+    { id: 'activities', label: t('common.activities') },
+    { id: 'creativity', label: t('common.creativity') }
   ];
 
   // Smooth scroll to section
@@ -76,14 +72,6 @@ function App() {
     document.body.removeChild(link);
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (error || !cvData) {
-    return <ErrorState message={error || undefined} />
-  }
-
   return (
     <div style={commonStyles.container}>
       {/* Fixed Header */}
@@ -97,37 +85,37 @@ function App() {
 
       {/* Home Section */}
       <div ref={homeRef}>
-        <Hero cvData={cvData} onDownloadCV={downloadCV} lang={lang} />
+        <Hero onDownloadCV={downloadCV} lang={lang} />
       </div>
 
       {/* Career Section */}
       <div ref={careerRef}>
-        <CareerSection experience={cvData.experience} lang={lang} />
+        <CareerSection lang={lang} />
       </div>
 
       {/* Education Section */}
       <div ref={educationRef}>
-        <EducationSection education={cvData.education} lang={lang} />
+        <EducationSection lang={lang} />
       </div>
 
       {/* Projects Section */}
       <div ref={projectsRef}>
-        <ProjectsSection projects={projectsData} lang={lang} />
+        <ProjectsSection lang={lang} />
       </div>
 
       {/* Skills Section */}
       <div ref={skillsRef}>
-        <SkillsSection skills={cvData.skills} languages={cvData.languages} lang={lang} />
+        <SkillsSection lang={lang} />
       </div>
 
       {/* Extracurricular Activities Section */}
       <div ref={activitiesRef}>
-        <ActivitiesSection activities={cvData.extracurricular_activities || []} lang={lang} />
+        <ActivitiesSection lang={lang} />
       </div>
 
       {/* Creativity & Interests Section */}
       <div ref={creativityRef}>
-        <CreativitySection interests={cvData.interests} lang={lang} />
+        <CreativitySection lang={lang} />
       </div>
 
       {/* Footer */}

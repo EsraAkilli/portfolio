@@ -7,7 +7,7 @@ export const interests = {
   
   technicalLearning: {
     category: "Teknik & Öğrenme",
-    items: ["Teknoloji Blog Yazımı", "AI Araştırması", "Açık Kaynak Katkısı", "Teknik Yazım"],
+    items: ["Teknoloji Blog Yazımı", "AI Araştırması"],
     description: "Bilgi paylaşımında aktif ve teknoloji topluluğuna katkıda bulunuyorum"
   },
   

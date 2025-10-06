@@ -9,14 +9,13 @@ export const experience = {
       "Enriching development tasks using LLMs for semantic understanding and context-aware task generation",
       "Delivering internal technical presentations on Transformers Architecture, Spring AI, and LLM integration strategies",
       "Published AI/ML-focused articles on the company's official Medium account, translating complex concepts into accessible content for both technical and business readers",
-      "Optimized LLM-driven workflows by applying prompt engineering methods and leveraging Hugging Face integrations",
-      "Developed a text-to-SQL prototype using Spring AI, enabling natural language querying for non-technical users",
-      "Created a demo project analyzing software design principles in AI applications, with a focus on clean architecture and maintainability",
+      "Optimized LLM-driven workflows by applying prompt engineering methods",
+      "Created a demo project analyzing software design principles, with a focus on clean architecture and maintainability",
       "Contributed to the modernization of digital banking systems through backend services management with Spring Boot, RESTful API design, and ensuring clean code standards",
       "Monitored microservices using Rancher & Kibana, improved test coverage with SonarQube and Postman collections",
       "Oversaw CI/CD workflows via Jenkins, streamlining model deployment and release management"
     ],
-    technologies: ["Python", "XGBoost", "Random Forest", "LLMs", "Spring AI", "Hugging Face", "Spring Boot", "RESTful APIs", "Jenkins", "SonarQube", "Rancher", "Kibana", "Postman"]
+    technologies: ["Python", "SQL", "LLMs", "Hugging Face", "Java", "RESTful APIs", "Jenkins", "Postman"]
   },
   
   macellan: {

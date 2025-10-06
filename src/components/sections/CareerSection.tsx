@@ -1,14 +1,12 @@
 import React from 'react';
-import { Experience } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface CareerSectionProps {
-  experience: Experience[];
   lang: 'en' | 'tr';
 }
 
-const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
+const CareerSection: React.FC<CareerSectionProps> = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   return (
@@ -26,18 +24,8 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
           borderRadius: '2px'
         }} />
         
-        {experience?.map((exp, index) => {
-          // Get translated content based on language
-          const translatedExp = lang === 'tr' 
-            ? {
-                position: t(`experience.${index === 0 ? 'tomBank' : index === 1 ? 'macellan' : 'tusas'}.position`),
-                company: exp.company,
-                location: t(`experience.${index === 0 ? 'tomBank' : index === 1 ? 'macellan' : 'tusas'}.location`),
-                duration: t(`experience.${index === 0 ? 'tomBank' : index === 1 ? 'macellan' : 'tusas'}.duration`),
-                achievements: t(`experience.${index === 0 ? 'tomBank' : index === 1 ? 'macellan' : 'tusas'}.achievements`),
-                technologies: exp.technologies
-              }
-            : exp;
+        {['tomBank', 'macellan', 'tusas'].map((expKey, index) => {
+          const exp = t(`experience.${expKey}`);
           
           return (
           <div key={index} style={{
@@ -66,7 +54,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
                   marginBottom: theme.spacing.sm, 
                   fontWeight: theme.typography.weights.semibold 
                 }}>
-                  {translatedExp.position}
+                  {exp.position}
                 </h3>
                 <p style={{ 
                   fontSize: theme.typography.sizes.xxxl, 
@@ -74,7 +62,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
                   fontWeight: theme.typography.weights.semibold, 
                   marginBottom: theme.spacing.xs 
                 }}>
-                  {translatedExp.company}
+                  {exp.company}
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: theme.spacing.md, marginTop: theme.spacing.sm, paddingLeft: '0' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: theme.spacing.xs }}>
@@ -87,7 +75,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
                       fontSize: theme.typography.sizes.base,
                       fontWeight: theme.typography.weights.medium
                     }}>
-                      {translatedExp.location}
+                      {exp.location}
                     </span>
                   </div>
                   <div style={{ 
@@ -105,14 +93,14 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
                       fontSize: theme.typography.sizes.base,
                       fontWeight: theme.typography.weights.medium
                     }}>
-                      {translatedExp.duration}
+                      {exp.duration}
                     </span>
                   </div>
                 </div>
               </div>
               
               <ul style={{ paddingLeft: '0', listStyle: 'none', marginBottom: theme.spacing.xl }}>
-                {translatedExp.achievements?.map((achievement: string, i: number) => (
+                {exp.achievements?.map((achievement: string, i: number) => (
                   <li key={i} style={{
                     marginBottom: theme.spacing.md,
                     paddingLeft: theme.spacing.xl,
@@ -133,7 +121,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
               </ul>
 
               {/* Technologies */}
-              {translatedExp.technologies && (
+              {exp.technologies && (
                 <div>
                   <h4 style={{ 
                     fontSize: theme.typography.sizes.lg, 
@@ -144,7 +132,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ experience, lang }) => {
                     {lang === 'tr' ? 'Kullanılan Teknolojiler:' : 'Technologies Used:'}
                   </h4>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: theme.spacing.sm }}>
-                    {translatedExp.technologies.map((tech, i) => (
+                    {exp.technologies.map((tech: string, i: number) => (
                       <span key={i} className="tag-secondary">
                         {tech}
                       </span>

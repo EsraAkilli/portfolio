@@ -21,6 +21,26 @@ export const common = {
   downloadCV: "CV İndir",
   builtWith: "React & TypeScript ile tutkuyla geliştirildi",
   
+  // Personal Information
+  personalInfo: {
+    name: "ESRA AKILLI",
+    title: "ML & Generative AI | Akıllı Sistemler İnşa Ediyorum",
+    bio: "Matematik ve Endüstri Mühendisliği alanlarında güçlü çift altyapıya sahip, makine öğrenmesi ve generative AI konularında uzmanlaşmış tutkulu bir mühendis. LLM'ler ve NLP gibi en son teknolojileri kullanarak gerçek dünya problemlerini çözen akıllı sistemler inşa etme konusunda deneyimli. Aynı zamanda yaratıcı problem çözme ve en son teknoloji yeniliklerini takip etme konusunda ilgili bir hobi sanatçısı, mobil oyun tutkunu ve gezgin."
+  },
+  
+  // Contact Information
+  contact: {
+    email: "akilliesra.01@gmail.com",
+    linkedin: "esra-akıllı",
+    github: "https://github.com/EsraAkilli"
+  },
+  
+  // Languages
+  languages: [
+    {"language": "Türkçe", "level": "Ana Dil"},
+    {"language": "İngilizce", "level": "Profesyonel Çalışma"}
+  ],
+  
   // Hero Section
   hero: {
     title: "ML & Generative AI | Akıllı Sistemler İnşa Ediyorum",

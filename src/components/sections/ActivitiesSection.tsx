@@ -1,14 +1,12 @@
 import React from 'react';
-import { ExtracurricularActivity } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface ActivitiesSectionProps {
-  activities: ExtracurricularActivity[];
   lang: 'en' | 'tr';
 }
 
-const ActivitiesSection: React.FC<ActivitiesSectionProps> = ({ activities: _, lang }) => {
+const ActivitiesSection: React.FC<ActivitiesSectionProps> = ({ lang }) => {
   const { t } = useTranslation(lang);
 
   // Get activities data from translation files

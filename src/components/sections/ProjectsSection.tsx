@@ -1,16 +1,16 @@
 import React from 'react';
-import { Project } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 import ProjectCard from '../ProjectCard';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface ProjectsSectionProps {
-  projects: Project[];
   lang: 'en' | 'tr';
 }
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, lang }) => {
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
   const { t } = useTranslation(lang);
+
+  const projectKeys = ['aiSummarizer', 'noteTakingApp', 'pdfChatAssistant', 'cvWebsite'];
 
   return (
     <section style={commonStyles.section} id="projects">
@@ -24,9 +24,18 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, lang }) => 
         margin: '0 auto',
         alignItems: 'stretch'
       }}>
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} onOpen={() => {}} lang={lang} />
-        ))}
+        {projectKeys.map((projectKey, index) => {
+          const project = t(`projects.${projectKey}`);
+          return (
+            <ProjectCard 
+              key={index} 
+              project={project} 
+              index={index} 
+              onOpen={() => {}} 
+              lang={lang} 
+            />
+          );
+        })}
       </div>
     </section>
   );

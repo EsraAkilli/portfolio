@@ -6,21 +6,21 @@ export const skills = {
   
   aiDataTechnologies: {
     category: "AI & Data Technologies",
-    items: ["Generative AI", "NLP", "LLMs", "RAG", "Statistical Data Analysis", "Data Processing", "Scikit-learn", "Hugging Face Hub & Transformers", "Ollama"]
+    items: ["Generative AI", "NLP", "LLMs", "RAG", "Statistical Data Analysis", "Data Processing", "Ollama", "Hugging Face Hub & Transformers"]
   },
   
   softwareInfrastructure: {
     category: "Software & Infrastructure",
-    items: ["RESTful API Design", "Microservices", "CI/CD", "Jenkins", "Git", "Bitbucket", "Swagger", "Postman", "SonarQube", "Rancher", "Elasticsearch", "Kibana", "SQLite"]
+    items: ["RESTful API Design", "Microservices", "CI/CD", "Jenkins", "Git", "Bitbucket", "Swagger", "Postman", "Rancher", "Elasticsearch"]
   },
   
   optimizationProductivityTools: {
     category: "Optimization & Productivity Tools",
-    items: ["GAMS", "OpenSolver", "MS Office", "AutoCAD"]
+    items: ["MS Office","OpenSolver","GAMS", "AutoCAD"]
   },
   
   designContentCreation: {
     category: "Design & Content Creation",
-    items: ["Adobe Photoshop", "Illustrator", "After Effects", "DaVinci Resolve", "Canva"]
+    items: [ "DaVinci Resolve", "Adobe Photoshop", "Adobe Illustrator", "After Effects", "Canva"]
   }
 };

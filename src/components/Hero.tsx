@@ -1,15 +1,13 @@
 import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
-import { CVData } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 
 type Props = {
-  cvData: CVData;
   onDownloadCV: () => void;
   lang: 'en' | 'tr';
 };
 
-const Hero: React.FC<Props> = ({ cvData, onDownloadCV, lang }) => {
+const Hero: React.FC<Props> = ({ onDownloadCV, lang }) => {
   const { t } = useTranslation(lang);
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-[32rem] flex items-center justify-center py-16 mt-16">
@@ -27,31 +25,31 @@ const Hero: React.FC<Props> = ({ cvData, onDownloadCV, lang }) => {
 
         {/* Name with better typography */}
         <h1 className="text-4xl font-bold tracking-tight text-blue-600 mb-4">
-          {cvData.personal_info?.name || 'ESRA AKILLI'}
+          {t('common.personalInfo.name')}
         </h1>
         
         {/* Title with accent color */}
         <p className="text-xl text-slate-600 font-medium mb-6">
-          {t('common.hero.title')}
+          {t('common.personalInfo.title')}
         </p>
         
         {/* Description with better readability */}
         <p className="text-gray-600 leading-relaxed mb-8 text-lg max-w-3xl mx-auto">
-          {t('common.hero.description')}
+          {t('common.personalInfo.bio')}
         </p>
 
         {/* Social icons with better spacing */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <a className="w-12 h-12 rounded-full grid place-items-center bg-blue-600 text-white shadow-lg hover:scale-110 hover:bg-blue-700 transition-all duration-200"
-             href={`https://linkedin.com/in/${cvData.contact?.linkedin}`} target="_blank" rel="noopener noreferrer">
+             href={`https://linkedin.com/in/${t('common.contact.linkedin')}`} target="_blank" rel="noopener noreferrer">
             <FaLinkedin size={20} />
           </a>
           <a className="w-12 h-12 rounded-full grid place-items-center bg-gray-800 text-white shadow-lg hover:scale-110 hover:bg-gray-900 transition-all duration-200"
-             href={cvData.contact?.github} target="_blank" rel="noopener noreferrer">
+             href={t('common.contact.github')} target="_blank" rel="noopener noreferrer">
             <FaGithub size={20} />
           </a>
           <a className="w-12 h-12 rounded-full grid place-items-center bg-red-500 text-white shadow-lg hover:scale-110 hover:bg-red-600 transition-all duration-200"
-             href={`mailto:${cvData.contact?.email}`}>
+             href={`mailto:${t('common.contact.email')}`}>
             <FaEnvelope size={20} />
           </a>
         </div>

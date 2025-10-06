@@ -1,15 +1,13 @@
 import React from 'react';
-import { InterestCategory } from '../../types';
 import { commonStyles, theme } from '../../styles/theme';
 // import PortfolioSlider from '../PortfolioSlider';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface CreativitySectionProps {
-  interests: InterestCategory[];
   lang: 'en' | 'tr';
 }
 
-const CreativitySection: React.FC<CreativitySectionProps> = ({ interests, lang }) => {
+const CreativitySection: React.FC<CreativitySectionProps> = ({ lang }) => {
   // const [currentPortfolioPage, setCurrentPortfolioPage] = useState(0);
   const { t } = useTranslation(lang);
 
@@ -34,7 +32,9 @@ const CreativitySection: React.FC<CreativitySectionProps> = ({ interests, lang }
       
       {/* Interest Categories */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: theme.spacing.xxl, marginBottom: theme.spacing.xxxxl }}>
-        {interests?.map((interestCategory, index) => (
+        {['creativeArtistic', 'technicalLearning', 'activeWellness'].map((interestKey, index) => {
+          const interestCategory = t(`interests.${interestKey}`);
+          return (
           <div key={index} style={{
             ...commonStyles.card,
             background: index === 0 ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' :
@@ -60,7 +60,7 @@ const CreativitySection: React.FC<CreativitySectionProps> = ({ interests, lang }
               color: theme.colors.text.primary,
               fontWeight: theme.typography.weights.semibold
             }}>
-              {lang === 'tr' ? t(`interests.${index === 0 ? 'creativeArtistic' : index === 1 ? 'technicalLearning' : 'activeWellness'}.category`) : interestCategory.category}
+              {interestCategory.category}
             </h3>
             <p style={{
               color: theme.colors.text.secondary,
@@ -69,10 +69,10 @@ const CreativitySection: React.FC<CreativitySectionProps> = ({ interests, lang }
               fontStyle: 'italic',
               fontSize: theme.typography.sizes.base
             }}>
-              {lang === 'tr' ? t(`interests.${index === 0 ? 'creativeArtistic' : index === 1 ? 'technicalLearning' : 'activeWellness'}.description`) : interestCategory.description}
+              {interestCategory.description}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: theme.spacing.sm }}>
-              {interestCategory.items?.map((interest, i) => (
+              {interestCategory.items?.map((interest: string, i: number) => (
                 <span key={i} style={{
                   padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
                   borderRadius: '20px',
@@ -95,12 +95,13 @@ const CreativitySection: React.FC<CreativitySectionProps> = ({ interests, lang }
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                 }}>
-                  {lang === 'tr' ? t(`interests.${index === 0 ? 'creativeArtistic' : index === 1 ? 'technicalLearning' : 'activeWellness'}.items`)[i] : interest}
+                  {interest}
                 </span>
               ))}
             </div>
           </div>
-        ))}
+        );
+        })}
       </div>
 
       {/* Creative Portfolio Showcase */}

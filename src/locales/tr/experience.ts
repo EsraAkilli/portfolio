@@ -9,14 +9,13 @@ export const experience = {
       "LLM'ler kullanarak geliştirme görevlerini semantik anlama ve bağlam farkındalıklı görev üretimi için zenginleştiriyorum",
       "Transformers Architecture, Spring AI ve LLM entegrasyon stratejileri hakkında dahili teknik sunumlar veriyorum",
       "Şirketin resmi Medium hesabında AI/ML odaklı makaleler yayınladım, karmaşık kavramları hem teknik hem de iş okuyucuları için erişilebilir içeriğe çevirdim",
-      "Prompt engineering yöntemlerini uygulayarak ve LangChain ve Hugging Face entegrasyonlarından yararlanarak LLM odaklı iş akışlarını optimize ettim",
-      "Spring AI kullanarak text-to-SQL prototipi geliştirdim, teknik olmayan kullanıcılar için doğal dil sorgulamasını mümkün kıldım",
+      "Prompt engineering yöntemlerini uygulayarak LLM odaklı iş akışlarını optimize ettim",
       "AI uygulamalarında yazılım tasarım prensiplerini analiz eden demo proje oluşturdum, temiz mimari ve sürdürülebilirliğe odaklanarak",
       "Spring Boot, RESTful API tasarımı ve temiz kod standartlarını sağlayarak dijital bankacılık sistemlerinin modernizasyonuna katkıda bulundum",
       "Rancher & Kibana kullanarak mikroservisleri izledim, SonarQube ve Postman koleksiyonları ile test kapsamını iyileştirdim",
       "Jenkins aracılığıyla CI/CD iş akışlarını denetledim, model dağıtımını ve sürüm yönetimini kolaylaştırdım"
     ],
-    technologies: ["Python", "XGBoost", "Random Forest", "LLMs", "Spring AI", "LangChain", "Hugging Face", "Spring Boot", "RESTful APIs", "Jenkins", "SonarQube", "Rancher", "Kibana", "Postman"]
+    technologies: ["Python", "SQL", "LLMs", "Hugging Face", "Java", "RESTful APIs", "Jenkins", "Postman"]
   },
   
   macellan: {
