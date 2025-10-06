@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { commonStyles, theme } from '../../styles/theme';
-// import PortfolioSlider from '../PortfolioSlider';
+import PortfolioSlider from '../PortfolioSlider';
 import { useTranslation } from '../../hooks/useTranslation';
 
 interface CreativitySectionProps {
@@ -8,23 +8,57 @@ interface CreativitySectionProps {
 }
 
 const CreativitySection: React.FC<CreativitySectionProps> = ({ lang }) => {
-  // const [currentPortfolioPage, setCurrentPortfolioPage] = useState(0);
+  const [currentPortfolioPage, setCurrentPortfolioPage] = useState(0);
   const { t } = useTranslation(lang);
 
-  // const portfolioItems = [
-  //   { title: 'Digital Art & Design', desc: 'Adobe Creative Suite projects', color: '#ff6b6b', icon: '🎨' },
-  //   { title: 'Video Production', desc: 'YouTube educational content', color: '#4ecdc4', icon: '🎬' },
-  //   { title: 'Animation Work', desc: 'Script writing & animation', color: '#45b7d1', icon: '🎞️' },
-  //   { title: 'Technical Writing', desc: 'Medium articles & content', color: '#f9ca24', icon: '✍️' }
-  // ];
+  const portfolioItems = [
 
-  // const nextPortfolioPage = (count: number) => {
-  //   setCurrentPortfolioPage((prev) => (prev + 1) % Math.max(count, 1));
-  // };
+    //1
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/kurek1.jpeg' },
+    { title: 'Art & Drawings', desc: 'Creative drawings and artistic works', color: '#ff6b6b', image: '/portfolio/cizim2.jpeg' },
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/dans1.jpeg' },
 
-  // const prevPortfolioPage = (count: number) => {
-  //   setCurrentPortfolioPage((prev) => (prev - 1 + Math.max(count, 1)) % Math.max(count, 1));
-  // };
+    //2
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/spor1.jpeg' },
+    { title: 'Photography', desc: 'Landscape and nature photography', color: '#4ecdc4', image: '/portfolio/manzara1.jpeg' },
+    { title: 'Travel & Exploration', desc: 'Adventure and exploration moments', color: '#ff8a80', image: '/portfolio/gezi1.jpg' },
+
+    //3
+    { title: 'Art & Drawings', desc: 'Creative drawings and artistic works', color: '#ff6b6b', image: '/portfolio/cizim1.jpeg' },
+    { title: 'Reading & Learning', desc: 'Books, quotes, and learning moments', color: '#a78bfa', image: '/portfolio/kitap1.jpeg' },
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/spor2.jpeg' },
+
+    //4
+    { title: 'Travel & Exploration', desc: 'Adventure and exploration moments', color: '#ff8a80', image: '/portfolio/gezi2.jpeg' },
+    { title: 'Travel & Exploration', desc: 'Adventure and exploration moments', color: '#ff8a80', image: '/portfolio/ucak.jpeg' },
+    { title: 'Creative Arts', desc: 'Various artistic and creative projects', color: '#ce93d8', image: '/portfolio/sanat2.jpeg' },
+
+    //5
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/spor3.jpeg' },
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/tiyatro.jpeg' },
+    { title: 'Photography', desc: 'Landscape and nature photography', color: '#4ecdc4', image: '/portfolio/manzara3.jpeg' },
+    
+    //6
+    { title: 'Creative Arts', desc: 'Various artistic and creative projects', color: '#ce93d8', image: '/portfolio/sanat1.jpeg' },
+    { title: 'Photography', desc: 'Landscape and nature photography', color: '#4ecdc4', image: '/portfolio/manzara2.jpeg' },
+    { title: 'Art & Drawings', desc: 'Creative drawings and artistic works', color: '#ff6b6b', image: '/portfolio/cizim5.jpeg' },
+    
+    //7
+    { title: 'Sports & Activities', desc: 'Rowing, theater, and active lifestyle', color: '#f9ca24', image: '/portfolio/kurek2.jpeg' },
+    { title: 'Creative Arts', desc: 'Various artistic and creative projects', color: '#ce93d8', image: '/portfolio/lego.jpeg' },
+
+    { title: 'Reading & Learning', desc: 'Books, quotes, and learning moments', color: '#a78bfa', image: '/portfolio/soz.jpeg' },
+  ];
+
+  const nextPortfolioPage = () => {
+    const totalPages = Math.ceil(portfolioItems.length / 3);
+    setCurrentPortfolioPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPortfolioPage = () => {
+    const totalPages = Math.ceil(portfolioItems.length / 3);
+    setCurrentPortfolioPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
 
   return (
     <section style={commonStyles.section} id="creativity">
@@ -105,33 +139,56 @@ const CreativitySection: React.FC<CreativitySectionProps> = ({ lang }) => {
       </div>
 
       {/* Creative Portfolio Showcase */}
-      {/* <div style={commonStyles.card}>
-        <h3 style={{ 
-          fontSize: theme.typography.sizes.xxxxxl, 
-          marginBottom: theme.spacing.lg, 
-          color: theme.colors.text.primary, 
-          fontWeight: theme.typography.weights.semibold 
-        }}>
-          {t('common.creativePortfolioShowcase')}
-        </h3>
-        <p style={{ 
-          color: theme.colors.text.secondary, 
-          marginBottom: theme.spacing.xxl, 
-          lineHeight: '1.6' 
-        }}>
-                      {t('common.creativePortfolioDescription')}
-        </p>
+      <div style={{
+        ...commonStyles.card,
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        border: 'none',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.15)'
+      }}>
+        {/* Background Pattern */}
+        <div style={{
+          position: 'absolute',
+          top: '-50%',
+          right: '-50%',
+          width: '200%',
+          height: '200%',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+          animation: 'float 8s ease-in-out infinite',
+          pointerEvents: 'none'
+        }} />
         
-        <div className="py-2">
-          <PortfolioSlider
-            items={portfolioItems}
-            page={currentPortfolioPage}
-            onPrev={() => prevPortfolioPage(2)}
-            onNext={() => nextPortfolioPage(2)}
-            onSetPage={(i) => setCurrentPortfolioPage(i)}
-          />
+        <div style={{ position: 'relative', zIndex: 10 }}>
+          <h3 style={{ 
+            fontSize: theme.typography.sizes.xxxxxl, 
+            marginBottom: theme.spacing.lg, 
+            color: 'white', 
+            fontWeight: theme.typography.weights.bold,
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            {lang === 'tr' ? 'Yaratıcı Portföy Vitrin' : 'Creative Portfolio Showcase'}
+          </h3>
+          <p style={{ 
+            color: 'rgba(255,255,255,0.9)', 
+            marginBottom: theme.spacing.xxl, 
+            lineHeight: '1.6',
+            textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+          }}>
+            {lang === 'tr' ? 'Yaratıcılığımın farklı yönlerini keşfedin - sanat, fotoğrafçılık, spor ve seyahat anılarım' : 'Explore different aspects of my creativity - art, photography, sports, and travel memories'}
+          </p>
+          
+          <div className="py-2">
+            <PortfolioSlider
+              items={portfolioItems}
+              page={currentPortfolioPage}
+              onPrev={prevPortfolioPage}
+              onNext={nextPortfolioPage}
+              onSetPage={(i) => setCurrentPortfolioPage(i)}
+            />
+          </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 };

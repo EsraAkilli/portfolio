@@ -10,24 +10,39 @@ type Props = {
 };
 
 const PortfolioSlider: React.FC<Props> = ({ items, page, onPrev, onNext, onSetPage }) => {
-  const perPage = 4;
+  const perPage = 3;
+  const totalPages = Math.ceil(items.length / perPage);
 
   return (
     <div className="relative max-w-3xl mx-auto">
-      <button onClick={onPrev} className="absolute -left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-100 border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-200">‹</button>
-      <button onClick={onNext} className="absolute -right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-100 border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-200">›</button>
+      <button onClick={onPrev} className="absolute -left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-white/20 grid place-items-center text-white hover:bg-white/100 shadow-lg hover:shadow-xl transition-all">‹</button>
+      <button onClick={onNext} className="absolute -right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-white/20 grid place-items-center text-white hover:bg-white/100 shadow-lg hover:shadow-xl transition-all">›</button>
 
       <div className="overflow-hidden">
-        <div className="flex w-[200%] transition-transform duration-300" style={{ transform: `translateX(-${page * 50}%)` }}>
-          {[0, 1].map(p => (
-            <div key={p} className="grid grid-cols-4 gap-4 px-5 w-1/2">
+        <div className="flex transition-transform duration-300" style={{ 
+          width: `${totalPages * 100}%`,
+          transform: `translateX(-${page * (100 / totalPages)}%)`
+        }}>
+          {Array.from({ length: totalPages }, (_, p) => (
+            <div key={p} className="grid grid-cols-3 gap-6 px-5" style={{ width: `${100 / totalPages}%` }}>
               {items.slice(p * perPage, p * perPage + perPage).map((item, i) => (
-                <div key={i} className="aspect-[4/3] border-2 border-dashed border-slate-300 rounded-xl grid place-items-center text-center text-slate-500 hover:-translate-y-1 transition-all" style={{ backgroundColor: `${item.color}15` }}>
-                  <div className="w-10 h-10 rounded-full grid place-items-center mb-2" style={{ backgroundColor: `${item.color}30` }}>
-                    <span>{item.icon}</span>
+                <div key={i} className="group relative aspect-[3/4] rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                  {/* Background Image */}
+                  {item.image && (
+                    <div className="absolute inset-0 transition-all duration-500 group-hover:scale-110">
+                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <h4 className="text-white font-bold text-sm mb-2">{item.title}</h4>
+                    <p className="text-white text-xs opacity-90">{item.desc}</p>
                   </div>
-                  <div className="text-sm font-semibold text-slate-800">{item.title}</div>
-                  <div className="text-xs text-slate-500">{item.desc}</div>
+                  
                 </div>
               ))}
             </div>
@@ -36,8 +51,8 @@ const PortfolioSlider: React.FC<Props> = ({ items, page, onPrev, onNext, onSetPa
       </div>
 
       <div className="flex justify-center gap-1.5 mt-4">
-        {[0, 1].map(i => (
-          <button key={i} onClick={() => onSetPage(i)} className={`w-2 h-2 rounded-full ${i === page ? 'bg-blue-600' : 'bg-slate-300'}`} />
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button key={i} onClick={() => onSetPage(i)} className={`w-3 h-3 rounded-full transition-all ${i === page ? 'bg-white shadow-lg' : 'bg-white/40 hover:bg-white/60'}`} />
         ))}
       </div>
     </div>

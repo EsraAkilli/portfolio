@@ -30,26 +30,26 @@ const ProjectCard: React.FC<Props> = ({ project, index, onOpen, lang }) => {
       >
         {/* Background Image */}
         {project.image && (
-          <div className="absolute inset-0 transition-all duration-500 group-hover:scale-110">
+          <div className="absolute inset-0 transition-all duration-300 group-hover:scale-105">
             <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
           </div>
         )}
         
-        {/* Overlay that appears on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
+        {/* Clean hover overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
           {/* Project Title */}
-          <h3 className="text-xl font-bold text-white mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 drop-shadow-lg">
+          <h3 className="text-xl font-bold text-white mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 drop-shadow-lg">
             {project.title}
           </h3>
           
           {/* Click to learn more text */}
-          <p className="text-white text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 drop-shadow-lg">
+          <p className="text-white text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 drop-shadow-lg">
             {lang === 'tr' ? 'Daha fazla bilgi için tıklayın' : 'Click to learn more'}
           </p>
         </div>
         
         {/* Initial content (visible when not hovering) */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6 transition-all duration-500 group-hover:opacity-0">
+        <div className="absolute inset-0 flex flex-col justify-end p-6 transition-all duration-300 group-hover:opacity-0">
           {/* Light overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
           
